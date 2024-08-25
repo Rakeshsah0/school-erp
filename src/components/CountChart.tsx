@@ -10,17 +10,17 @@ import {
 const data = [
     {
         name: "Total",
-        count: 200,
+        count:1690,
         fill: "white",
       },
   {
     name: "Girls",
-    count: 66,
+    count: 456,
     fill: "#FAE27E",
   },
   {
     name: "Boys",
-    count: 134,
+    count: 1234,
     fill: "#C3EBFA",
   },
 ];
@@ -45,7 +45,6 @@ const CountChart = () => {
             data={data}
           >
             <RadialBar
-              label={{ position: "insideStart", fill: "#fff" }}
               background
               dataKey="count"
             />

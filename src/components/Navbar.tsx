@@ -1,5 +1,5 @@
 import Image from "next/image"
-let n=89
+let n=6
 const Navbar = () => {
   return (
     <div className="flex items-center justify-between p-4">

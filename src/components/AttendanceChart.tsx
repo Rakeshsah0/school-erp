@@ -13,11 +13,7 @@ import {
 } from "recharts";
 
 const data = [
-  {
-    name: "Sun",
-    present: 40,
-    absent: 70,
-  },
+  
   {
     name: "Mon",
     present: 70,
@@ -42,6 +38,11 @@ const data = [
     name: "Fri",
     present: 50,
     absent: 60,
+  },
+  {
+    name: "Sat",
+    present: 40,
+    absent: 70,
   },
 ];
 

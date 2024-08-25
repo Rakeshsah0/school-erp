@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import Image from 'next/image';
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
@@ -32,12 +31,14 @@ const EventCalendar = () => {
     const truncateText = (text: string, maxLength: number) => {
         return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
       }
+      
   return (
     <div className='bg-white p-4 rounded-md'>
-        <Calendar value={value} onChange={onChange}/>
+        <Calendar value={value} onChange={onChange} />
         <div className="flex items-center justify-between">
             <h1 className='text-xl font-semibold my-4'>Events</h1>
-            <Image src="/moreDark.png" alt="" height={20} width={20} />
+            {/* <Image src="/moreDark.png" alt="" height={20} width={20} /> */}
+            <span className="text-xs text-gray-400">View All</span>
         </div>
         <div className="flex flex-col gap-2">
             {events.map((event)=>(

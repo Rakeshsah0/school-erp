@@ -7,20 +7,6 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import { useState } from "react";
 import { EventProps } from "react-big-calendar";
 
-// Custom Event Component
-const CustomEvent = ({ event }: EventProps) => {
-  const startTime = moment(event.start).format("HH:mm");
-  const endTime = moment(event.end).format("HH:mm");
-
-  return (
-    <div style={{ padding: "2px", backgroundColor: "red", borderRadius: "4px" }}>
-      <div style={{ fontSize: "12px", fontWeight: "bold" }}>
-        {startTime} - {endTime}
-      </div>
-      <div style={{ fontSize: "14px" }}>{event.title}</div>
-    </div>
-  );
-};
 
 const localizer = momentLocalizer(moment);
 
@@ -30,23 +16,29 @@ const BigCalendar = () => {
   const handleOnChangeView = (selectedView: View) => {
     setView(selectedView);
   };
+  const EventComponent = ({ event }: EventProps) => (
+    <span className="flex items-center justify-center"><h1 className="text-xs">{event.title}</h1></span>
+  );
 
   return (
-    <Calendar
+    <div className="h-[450px] md:h-[80vh]">
+<Calendar
       localizer={localizer}
       events={calendarEvents}
       startAccessor="start"
       endAccessor="end"
-      views={["work_week", "day"]}
+      views={["day","work_week"]}
       view={view}
       style={{ height: "98%"}}
       onView={handleOnChangeView}
-      min={new Date(2025, 1, 0, 8, 0, 0)}
-      max={new Date(2025, 1, 0, 17, 0, 0)}
+      min={new Date(2024, 8, 27, 8, 0, 0)}
+      max={new Date(2024, 8, 27, 17, 0, 0)}
       components={{
-        event:CustomEvent
+        event: EventComponent
       }}
     />
+    </div>
+    
   );
 };
 

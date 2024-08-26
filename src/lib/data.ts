@@ -917,147 +917,74 @@ export const announcementsData = [
 
 
 // YOU SHOULD CHANGE THE DATES OF THE EVENTS TO THE CURRENT DATE TO SEE THE EVENTS ON THE CALENDAR
-export const calendarEvents = [
-  {
-    title: "Math",
-    allDay: false,
-    start: new Date(2024, 7, 12, 8, 0),
-    end: new Date(2024, 7, 12, 8, 45),
-  },
-  {
-    title: "English",
-    allDay: false,
-    start: new Date(2024, 7, 12, 9, 0),
-    end: new Date(2024, 7, 12, 9, 45),
-  },
-  {
-    title: "Biology",
-    allDay: false,
-    start: new Date(2024, 7, 12, 10, 0),
-    end: new Date(2024, 7, 12, 10, 45),
-  },
-  {
-    title: "Physics",
-    allDay: false,
-    start: new Date(2024, 7, 12, 11, 0),
-    end: new Date(2024, 7, 12, 11, 45),
-  },
-  {
-    title: "Chemistry",
-    allDay: false,
-    start: new Date(2024, 7, 12, 13, 0),
-    end: new Date(2024, 7, 12, 13, 45),
-  },
-  {
-    title: "History",
-    allDay: false,
-    start: new Date(2024, 7, 12, 14, 0),
-    end: new Date(2024, 7, 12, 14, 45),
-  },
-  {
-    title: "English",
-    allDay: false,
-    start: new Date(2024, 7, 13, 9, 0),
-    end: new Date(2024, 7, 13, 9, 45),
-  },
-  {
-    title: "Biology",
-    allDay: false,
-    start: new Date(2024, 7, 13, 10, 0),
-    end: new Date(2024, 7, 13, 10, 45),
-  },
-  {
-    title: "Physics",
-    allDay: false,
-    start: new Date(2024, 7, 13, 11, 0),
-    end: new Date(2024, 7, 13, 11, 45),
-  },
 
-  {
-    title: "History",
-    allDay: false,
-    start: new Date(2024, 7, 13, 14, 0),
-    end: new Date(2024, 7, 13, 14, 45),
-  },
-  {
-    title: "Math",
-    allDay: false,
-    start: new Date(2024, 7, 14, 8, 0),
-    end: new Date(2024, 7, 14, 8, 45),
-  },
-  {
-    title: "Biology",
-    allDay: false,
-    start: new Date(2024, 7, 14, 10, 0),
-    end: new Date(2024, 7, 14, 10, 45),
-  },
+// Define the structure of a calendar event
+interface CalendarEvent {
+  title: string;
+  allDay: boolean;
+  start: Date;
+  end: Date;
+}
 
-  {
-    title: "Chemistry",
-    allDay: false,
-    start: new Date(2024, 7, 14, 13, 0),
-    end: new Date(2024, 7, 14, 13, 45),
-  },
-  {
-    title: "History",
-    allDay: false,
-    start: new Date(2024, 7, 14, 14, 0),
-    end: new Date(2024, 7, 13, 14, 45),
-  },
-  {
-    title: "English",
-    allDay: false,
-    start: new Date(2024, 7, 15, 9, 0),
-    end: new Date(2024, 7, 15, 9, 45),
-  },
-  {
-    title: "Biology",
-    allDay: false,
-    start: new Date(2024, 7, 15, 10, 0),
-    end: new Date(2024, 7, 15, 10, 45),
-  },
-  {
-    title: "Physics",
-    allDay: false,
-    start: new Date(2024, 7, 15, 11, 0),
-    end: new Date(2024, 7, 15, 11, 45),
-  },
+// Function to generate a random start and end date within the next 7 days, with start time at HH:00 and end time at HH:45
+function getRandomDateWithinNextWeek(): { startDate: Date, endDate: Date } {
+  const today = new Date();
+  const randomDays = Math.floor(Math.random() * 7)-1; // Random day between today and 6 days later
+  const randomHours = Math.floor(Math.random() * 9) + 8; // Random hour between 8 AM and 4 PM
+  
+  // Set start time at HH:00
+  const startDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + randomDays, randomHours, 0, 0);
+  
+  // Set end time at HH:45
+  const endDate = new Date(startDate.getTime() + 45 * 60000); // 45 minutes later
 
-  {
-    title: "History",
-    allDay: false,
-    start: new Date(2024, 7, 15, 14, 0),
-    end: new Date(2024, 7, 15, 14, 45),
-  },
-  {
-    title: "Math",
-    allDay: false,
-    start: new Date(2024, 7, 16, 8, 0),
-    end: new Date(2024, 7, 16, 8, 45),
-  },
-  {
-    title: "English",
-    allDay: false,
-    start: new Date(2024, 7, 16, 9, 0),
-    end: new Date(2024, 7, 16, 9, 45),
-  },
+  return { startDate, endDate };
+}
 
-  {
-    title: "Physics",
-    allDay: false,
-    start: new Date(2024, 7, 16, 11, 0),
-    end: new Date(2024, 7, 16, 11, 45),
-  },
-  {
-    title: "Chemistry",
-    allDay: false,
-    start: new Date(2024, 7, 16, 13, 0),
-    end: new Date(2024, 7, 16, 13, 45),
-  },
-  {
-    title: "History",
-    allDay: false,
-    start: new Date(2024, 7, 16, 14, 0),
-    end: new Date(2024, 7, 16, 14, 45),
-  },
+// Function to check if the new event overlaps with any existing events
+function isOverlapping(start: Date, end: Date, events: CalendarEvent[]): boolean {
+  return events.some(event => 
+    (start < event.end && end > event.start) // Check if the new event overlaps with any existing events
+  );
+}
+
+const eventTitles = [
+  "DSA",      // Data Structures and Algorithms
+  "OOPs",   // Object-Oriented Programming
+  "Onto",  // Ontology
+  "MH",     // Mental Health
+  "Algo",    // Algorithms
+  "DS",    // Data Structures
+  "OOPL",        // Object-Oriented Programming Lab
+  "OCD",// Ontology Philosophy
+  "SM",    // Stress Management
+  "ADSA"         // Advanced Data Structures
 ];
+
+const getRandomTitle = () => {
+  const randomIndex = Math.floor(Math.random() * eventTitles.length);
+  return eventTitles[randomIndex];
+};
+
+// Main function to generate calendar events
+function generateCalendarEvents(): CalendarEvent[] {
+  const calendarEvents: CalendarEvent[] = [];
+
+  while (calendarEvents.length < 30) {
+    const { startDate, endDate } = getRandomDateWithinNextWeek();
+
+    if (!isOverlapping(startDate, endDate, calendarEvents)) {
+      calendarEvents.push({
+        title: getRandomTitle(),
+        allDay: false,
+        start: startDate,
+        end: endDate,
+      });
+    }
+  }
+
+  return calendarEvents;
+}
+
+// Exporting the calendarEvents
+export const calendarEvents: CalendarEvent[] = generateCalendarEvents();

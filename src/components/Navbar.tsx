@@ -3,7 +3,7 @@ import Link from "next/link";
 let n = 6;
 const Navbar = () => {
   return (
-    <div className="flex items-center p-4 sticky top-0 z-50 bg-white">
+    <div className="flex items-center p-4 sticky top-0 z-50 bg-[#F7F8FA]">
       {/* Logo  */}
       <div className="w-1/6 md:w-[8%] lg:w-[16%] xl:w-[15%]">
         <Link

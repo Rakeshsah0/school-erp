@@ -21,7 +21,6 @@ const BigCalendar = () => {
   );
 
   return (
-    <div className="h-[450px] md:h-[80vh]">
 <Calendar
       localizer={localizer}
       events={calendarEvents}
@@ -37,7 +36,6 @@ const BigCalendar = () => {
         event: EventComponent
       }}
     />
-    </div>
     
   );
 };

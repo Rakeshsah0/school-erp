@@ -1,6 +1,6 @@
 // TEMPORARY DATA
 
-export let role = "admin";
+export let role = "parent";
 
 export const teachersData = [
   {
@@ -929,7 +929,7 @@ interface CalendarEvent {
 // Function to generate a random start and end date within the next 7 days, with start time at HH:00 and end time at HH:45
 function getRandomDateWithinNextWeek(): { startDate: Date, endDate: Date } {
   const today = new Date();
-  const randomDays = Math.floor(Math.random() * 7)-1; // Random day between today and 6 days later
+  const randomDays = Math.floor(Math.random() * 7)-4; // Random day between today and 6 days later
   const randomHours = Math.floor(Math.random() * 9) + 8; // Random hour between 8 AM and 4 PM
   
   // Set start time at HH:00

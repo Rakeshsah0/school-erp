@@ -53,7 +53,7 @@ const columns = [
   },
 ];
 
-const StudentListPage = () => {
+const TeacherListPage = () => {
   const renderRow = (item: Teacher) => (
     <tr
       key={item.id}
@@ -79,7 +79,7 @@ const StudentListPage = () => {
       <td>
         <div className="flex items-center gap-2">
           <Link href={`/list/teachers/${item.id}`}>
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaSky">
+            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-rkSky">
               <Image
                 src="/view.png"
                 alt=""
@@ -89,7 +89,7 @@ const StudentListPage = () => {
             </button>
           </Link>
           {role === "admin" && (
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple">
+            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-rkPurple">
               <Image
                 src="/delete.png"
                 alt=""
@@ -111,7 +111,7 @@ const StudentListPage = () => {
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
           <TableSearch />
           <div className="flex items-center gap-4 self-end">
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow">
+            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-rkYellow">
               <Image
                 src="/filter.png"
                 alt=""
@@ -119,7 +119,7 @@ const StudentListPage = () => {
                 height={14}
               />
             </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow">
+            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-rkYellow">
               <Image
                 src="/sort.png"
                 alt=""
@@ -128,7 +128,7 @@ const StudentListPage = () => {
               />
             </button>
             {role === "admin" && (
-              <button className="w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow">
+              <button className="w-8 h-8 flex items-center justify-center rounded-full bg-rkYellow">
                 <Image
                   src="/plus.png"
                   alt=""
@@ -152,4 +152,4 @@ const StudentListPage = () => {
   );
 };
 
-export default StudentListPage;
+export default TeacherListPage;

@@ -48,7 +48,7 @@ const columns = [
   },
 ];
 
-const TeacherListPage = () => {
+const StudentListPage = () => {
   const renderRow = (item: Student) => (
     <tr
       key={item.id}
@@ -72,8 +72,8 @@ const TeacherListPage = () => {
       <td className="hidden lg:table-cell">{item.address}</td>
       <td>
         <div className="flex items-center gap-2">
-          <Link href={`/list/teachers/${item.id}`}>
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaSky">
+          <Link href={`/list/students/${item.id}`}>
+            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-rkSky">
               <Image
                 src="/view.png"
                 alt=""
@@ -83,7 +83,7 @@ const TeacherListPage = () => {
             </button>
           </Link>
           {role === "admin" && (
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple">
+            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-rkPurple">
               <Image
                 src="/delete.png"
                 alt=""
@@ -105,7 +105,7 @@ const TeacherListPage = () => {
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
           <TableSearch />
           <div className="flex items-center gap-4 self-end">
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow">
+            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-rkYellow">
               <Image
                 src="/filter.png"
                 alt=""
@@ -113,7 +113,7 @@ const TeacherListPage = () => {
                 height={14}
               />
             </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow">
+            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-rkYellow">
               <Image
                 src="/sort.png"
                 alt=""
@@ -122,7 +122,7 @@ const TeacherListPage = () => {
               />
             </button>
             {role === "admin" && (
-              <button className="w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow">
+              <button className="w-8 h-8 flex items-center justify-center rounded-full bg-rkYellow">
                 <Image
                   src="/plus.png"
                   alt=""
@@ -146,4 +146,4 @@ const TeacherListPage = () => {
   );
 };
 
-export default TeacherListPage;
+export default StudentListPage;
